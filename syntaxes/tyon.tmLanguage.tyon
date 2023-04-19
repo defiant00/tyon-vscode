@@ -1,0 +1,49 @@
+$schema = https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json
+
+name = TYON
+scopeName = source.tyon
+
+patterns = /(name match) [
+	; comments
+	(
+		comment.line.semicolon.tyon
+		";.*"
+	)
+	; constants
+	(
+		constant.language.tyon
+		"\b(?:true|false|null)\b"
+	)
+
+	; numbers
+	(
+		constant.numeric.binary.tyon
+		"-?0[bB][01_]+(?:\.[01_]+)?"
+	)
+	(
+		constant.numeric.octal.tyon
+		"-?0[oO][0-7_]+(?:\.[0-7_]+)?"
+	)
+	(
+		constant.numeric.hex.tyon
+		"-?0[xX][0-9a-fA-F_]+(?:\.[0-9a-fA-F_]+)?"
+	)
+	; decimal comes last so it doesn't match the leading 0 of another numeric format
+	(
+		constant.numeric.decimal.tyon
+		"-?[0-9_]+(?:\.[0-9_]+)?"
+	)
+
+	; strings
+	/_ (
+		name = string.quoted.double.tyon
+		begin = """"
+		end = """"
+		patterns = [
+			(
+				name = constant.character.escape.tyon
+				match = """"""
+			)
+		]
+	)
+]
