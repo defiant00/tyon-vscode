@@ -1,9 +1,5 @@
 # Change Log
 
-All notable changes to the "tyon" extension will be documented in this file.
+## 1.0.0 - 2023-04-21
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+* Syntax highlighting

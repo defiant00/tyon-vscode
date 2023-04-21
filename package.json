@@ -1,8 +1,12 @@
 {
   "name": "tyon",
-  "displayName": "tyon",
+  "displayName": "TYON",
   "description": "TYON support for VS Code",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "defiant00",
+  "license": "MIT",
+  "repository": "https://github.com/tyon-lang/tyon-vscode",
+  "icon": "images/logo.png",
   "engines": {
     "vscode": "^1.77.0"
   },
