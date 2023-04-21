@@ -9,29 +9,47 @@ patterns = /(name match) [
 		comment.line.semicolon.tyon
 		";.*"
 	)
+
+	; literal key
+	(
+		support.type.property-name.tyon
+		"[^\s()\[\]=;/""][^\s()\[\]=;]*(?=\s*=)"
+	)
+
 	; constants
 	(
 		constant.language.tyon
-		"\b(?:true|false|null)\b"
+		"(?:^|(?<=[\s()\[\]=;]))(?:true|false|null)(?:$|(?=[\s()\[\]=;]))"
 	)
 
 	; numbers
 	(
 		constant.numeric.binary.tyon
-		"-?0[bB][01_]+(?:\.[01_]+)?"
+		"(?:^|(?<=[\s()\[\]=;]))-?0[bB][01](?:_?[01])*(?:\.[01](?:_?[01])*)?(?:$|(?=[\s()\[\]=;]))"
 	)
 	(
 		constant.numeric.octal.tyon
-		"-?0[oO][0-7_]+(?:\.[0-7_]+)?"
+		"(?:^|(?<=[\s()\[\]=;]))-?0[oO][0-7](?:_?[0-7])*(?:\.[0-7](?:_?[0-7])*)?(?:$|(?=[\s()\[\]=;]))"
+	)
+	(
+		constant.numeric.decimal.tyon
+		"(?:^|(?<=[\s()\[\]=;]))-?[0-9](?:_?[0-9])*(?:\.[0-9](?:_?[0-9])*)?(?:$|(?=[\s()\[\]=;]))"
 	)
 	(
 		constant.numeric.hex.tyon
-		"-?0[xX][0-9a-fA-F_]+(?:\.[0-9a-fA-F_]+)?"
+		"(?:^|(?<=[\s()\[\]=;]))-?0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*(?:\.[0-9a-fA-F](?:_?[0-9a-fA-F])*)?(?:$|(?=[\s()\[\]=;]))"
 	)
-	; decimal comes last so it doesn't match the leading 0 of another numeric format
+
+	; literals
 	(
-		constant.numeric.decimal.tyon
-		"-?[0-9_]+(?:\.[0-9_]+)?"
+		keyword.control.tyon
+		"[^\s()\[\]=;/""][^\s()\[\]=;]*(?:$|(?=[\s()\[\]=;]))"
+	)
+
+	; type names
+	(
+		entity.name.type.tyon
+		"(?:^|(?<=[\s()\[\]=;]))/\s*[^\s()\[\]=;/""][^\s()\[\]=;]*(?:$|(?=[\s()\[\]=;]))"
 	)
 
 	; strings
