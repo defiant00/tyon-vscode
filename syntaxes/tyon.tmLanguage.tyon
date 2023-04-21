@@ -10,12 +10,6 @@ patterns = /(name match) [
 		";.*"
 	)
 
-	; literal key
-	(
-		support.type.property-name.tyon
-		"[^\s()\[\]=;/""][^\s()\[\]=;]*(?=\s*=)"
-	)
-
 	; constants
 	(
 		constant.language.tyon
@@ -42,7 +36,7 @@ patterns = /(name match) [
 
 	; literals
 	(
-		keyword.control.tyon
+		variable.tyon
 		"[^\s()\[\]=;/""][^\s()\[\]=;]*(?:$|(?=[\s()\[\]=;]))"
 	)
 
